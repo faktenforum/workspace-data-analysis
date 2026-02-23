@@ -61,3 +61,4 @@ Then: `read_workspace_file(workspace, "uploads/chart.png")` to display in chat. 
 
 - **Filter/summarize in the execution environment** — For large datasets, do filtering, aggregation, or sampling inside your script and only return a summary or a small sample to the user (e.g. `print(summary); print(first_5_rows)`). Avoid passing full result sets through the conversation. Use `read_workspace_file` or `create_download_link` for the final artifact or a short summary; offer full export as download if needed.
 - **Control flow in code** — Use loops and conditionals inside a single script (one `execute_command` run) instead of multiple tool-call round-trips (e.g. process many files in one script, retry in a loop, branch on output).
+
