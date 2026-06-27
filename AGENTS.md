@@ -23,7 +23,7 @@
 - **Workspace = reference for all paths** — `execute_command` runs in the given workspace; paths in the script (e.g. in `savefig`) are relative to the workspace root. Use the **same** relative path for `read_workspace_file(workspace, …)` and `create_download_link(workspace, …)` (e.g. if you save to `chart.png`, use `read_workspace_file(workspace, "chart.png")`).
 - **Headless only** — always use the `Agg` backend; no display server available.
 - **Save inside workspace** — output path must be within the workspace so `read_workspace_file` can access it.
-- **Install deps in a venv** — create a virtual environment per workspace to avoid cross-workspace conflicts: `python3 -m venv .venv && source .venv/bin/activate && pip install pandas matplotlib seaborn`. Activate before running scripts: `source .venv/bin/activate && python3 script.py`.
+- **Install deps with uv** — the runtime has `uv`; do not use a manual venv or `pip install`. Run a script with its dependencies inline: `uv run --with pandas --with matplotlib --with seaborn script.py`. For a persistent project: `uv add pandas matplotlib seaborn` then `uv run script.py`.
 - **Encoding** — default to UTF-8; handle Latin-1 or other encodings if `head` shows garbled text.
 
 ## Minimal Example (CSV → Bar Chart)
